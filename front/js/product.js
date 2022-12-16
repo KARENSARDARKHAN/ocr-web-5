@@ -12,33 +12,23 @@ async function init() {
   let spanProductPageTitle = document.getElementsByTagName("title");
   spanProductPageTitle.innerHTML = product.name;
 
+  document.querySelector(
+    ".item__img"
+  ).innerHTML = `<img src="${product.imageUrl}" alt="${product.altTxt}">`;
+
+  let spanName = document.getElementById("title");
+  spanName.innerHTML = product.name;
+
   let spanPrice = document.getElementById("price");
   spanPrice.innerHTML = product.price;
 
   let spanDescription = document.getElementById("description");
   spanDescription.innerHTML = product.description;
 
-  let spanName = document.getElementById("title");
-  spanName.innerHTML = product.name;
-
-  document.querySelector(
-    ".item__img"
-  ).innerHTML = `<img src="${product.imageUrl}" alt="${product.altTxt}">`;
+  let Colors = document.getElementById("colors");
+  Colors.innerHTML = product.colors.map(function (color) {
+    `<option value="${color}">${color}</option>`;
+  });
 }
 
 init();
-//? javascript Change the attribute value of an HTML element img
-//INSPO FROM INDEX PAGE
-//let htmlProduct = `<a href="./product.html?id=${product._id}">
-//<article>
-// <img src="${product.imageUrl}" alt='${product.altTxt}'>
-//<h3 class="productName">${product.name}</h3>
-
-//document
-// .getElementsByClassName("item__img")
-//.setAttribute("src", "${product.imageUrl}");
-
-//document
-//.getElementsByClassName("item__img")
-//.setAttribute("src", "${product.imageUrl}");
-//spanImageUrl.innerHTML = product.imageUrl;
