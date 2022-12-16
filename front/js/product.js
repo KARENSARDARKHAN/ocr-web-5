@@ -9,6 +9,9 @@ async function init() {
   product = await product.json();
   console.log(product);
 
+  let spanProductPageTitle = document.getElementsByTagName("title");
+  spanProductPageTitle.innerHTML = product.name;
+
   let spanPrice = document.getElementById("price");
   spanPrice.innerHTML = product.price;
 
@@ -24,7 +27,8 @@ async function init() {
 }
 
 init();
-
+//? javascript Change the attribute value of an HTML element img
+//INSPO FROM INDEX PAGE
 //let htmlProduct = `<a href="./product.html?id=${product._id}">
 //<article>
 // <img src="${product.imageUrl}" alt='${product.altTxt}'>
