@@ -9,7 +9,6 @@ console.log(id);
 async function init() {
   let product = await fetch(`http://localhost:3000/api/products/${id}`);
   product = await product.json();
-  console.log(product);
 
   let spanProductPageTitle = document.getElementsByTagName("title");
   spanProductPageTitle.innerHTML = product.name;
