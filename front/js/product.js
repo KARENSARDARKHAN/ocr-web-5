@@ -12,9 +12,8 @@ async function init() {
   let spanProductPageTitle = document.getElementsByTagName("title");
   spanProductPageTitle.innerHTML = product.name;
 
-  document.querySelector(
-    ".item__img"
-  ).innerHTML = `<img src="${product.imageUrl}" alt="${product.altTxt}">`;
+  let image = document.querySelector(".item__img");
+  image.innerHTML = `<img src="${product.imageUrl}" alt="${product.altTxt}">`;
 
   let spanName = document.getElementById("title");
   spanName.innerHTML = product.name;
@@ -25,13 +24,15 @@ async function init() {
   let spanDescription = document.getElementById("description");
   spanDescription.innerHTML = product.description;
 
-  colors.innerHTML = product.colors.map(function (color) {
+  let colorSelection = document.getElementById("colors");
+  let colorSelectionArray = product.colors.map(function (color) {
     return `<option value="${color}">${color}</option>`;
   });
+  colorSelection.innerHTML = colorSelectionArray.join("");
 
-  _addToCart.addEventListener("click", () => {
-    if (_quantity.value !== "0")
-      cart.add({ id, color: _colors.value, quantity: _quantity.value });
+  let addToCartButton = document.getElementById("addToCart");
+  addToCartButton.addEventListener("click", () => {
+    console.log("hello");
   });
 }
 
