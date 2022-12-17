@@ -25,9 +25,13 @@ async function init() {
   let spanDescription = document.getElementById("description");
   spanDescription.innerHTML = product.description;
 
-  let Colors = document.getElementById("colors");
-  Colors.innerHTML = product.colors.map(function (color) {
-    `<option value="${color}">${color}</option>`;
+  colors.innerHTML = product.colors.map(function (color) {
+    return `<option value="${color}">${color}</option>`;
+  });
+
+  _addToCart.addEventListener("click", () => {
+    if (_quantity.value !== "0")
+      cart.add({ id, color: _colors.value, quantity: _quantity.value });
   });
 }
 
