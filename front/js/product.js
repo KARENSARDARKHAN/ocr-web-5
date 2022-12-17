@@ -1,3 +1,5 @@
+let cart = JSON.parse(localStorage.getItem("cart") || "{}");
+
 let url = new URLSearchParams(window.location.search);
 console.log(url);
 
@@ -32,7 +34,16 @@ async function init() {
 
   let addToCartButton = document.getElementById("addToCart");
   addToCartButton.addEventListener("click", () => {
-    console.log("hello");
+    let inputQuantity = document.getElementById("quantity");
+    let cartId = `${id}:${colorSelection.value}`;
+    if (+inputQuantity.value > 0) {
+      if (!cart[cartId]) {
+        cart[cartId] = 0;
+      }
+      cart[cartId] = cart[cartId] + +inputQuantity.value;
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(cart);
   });
 }
 
