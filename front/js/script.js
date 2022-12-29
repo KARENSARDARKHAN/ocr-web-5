@@ -1,4 +1,4 @@
-// Récupération du code HTML et Répartition des données de l'API dans le DOM
+/** Récupération du code HTML et Répartition des données de l'API dans le dom*/
 function htmlItemCard(product) {
   return `<a href="./product.html?id=${product._id}">
   <article>
@@ -9,16 +9,16 @@ function htmlItemCard(product) {
   </a>`;
 }
 
-// Récupération des articles de l'API
+/** Récupération des articles de l'API*/
 let response = await fetch("http://localhost:3000/api/products");
 let products = await response.json();
 
-//Utilisation de la propriété .innerHTML pour vider le HTML de la section
+/**Utilisation de la propriété .innerHTML pour vider le HTML de la section*/
 let sectionItems = document.getElementById("items");
 sectionItems.innerHTML = "";
 
-//Boucle for modifiant le HTML et générant l'apparition des cartes produits
-//les unes après les autres dans la page web.
+/**Boucle for modifiant le HTML et générant l'apparition 
+ * des cartes produits les unes après les autres dans la page web*/
 for (let index = 0; index < products.length; index++) {
   let productData = products[index];
   let productCardHtml = htmlItemCard(productData);
