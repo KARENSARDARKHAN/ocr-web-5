@@ -30,11 +30,29 @@ let arrayHtmlOptions = product.colors.map(function (color) {
 });
 domColorInputSelect.innerHTML = arrayHtmlOptions.join("");
 
+/**Pour affichage du nombre d'items dans le panier 
+ * à coté du bouton panier. */
+function displayCartTop() {
+  let itemsInCart = document.getElementById("cartlink");
+  itemsInCart.innerHTML = `(${totalQuantity})`;
+}
+
+function updateCartTotal(cart) {
+  let totalQuantity = 0;
+
+  for (let cartKey in cart) {
+    let quantity = cart[cartKey];
+    totalQuantity += quantity;
+  }
+  let domTotalQuantity = document.getElementById("cartTotalItems");
+  domTotalQuantity.innerHTML = totalQuantity;
+}
+updateCartTotal(cart);
+
 /**Pour gérer l'ajout des produits au panier: création d'une interraction 
  avec le bouton addtToCart avec la fonction addEventListener*/
 let domAddToCartButton = document.getElementById("addToCart");
 domAddToCartButton.addEventListener("click", function () {
-
   /**Récuperation de la quantité grâce à l'input du dom #quantity et
   conversion en number grace à la fonction javascript Number*/
   let domQuantityInput = document.getElementById("quantity");
@@ -60,6 +78,10 @@ domAddToCartButton.addEventListener("click", function () {
     /**Affichage d'un message d'avertissement si la quantité est égale à zéro*/
   } else {
     /** On averti l'utilisateur si il a mis une quantité égale à zéro*/
+    //A REMPLACER
     alert("Vous devez choisir une quantité superieure à 0");
   }
+
+  //appel de la fonction qui affiche la quantité dans le panier en haut de la page au moment du clic
+  displayCartTop();
 });
